@@ -191,10 +191,11 @@ def plot_spectogram_with_binned(
 
     ax[0].set_yticks([0, 1000, 2000, 3000, 4000, 5000])
     ax[0].set_yticklabels(["", 1000, 2000, 3000, 4000, 5000])
-    ax[0].set_ylabel("Frequency (Hz)")
-    ax[0].set_xlabel("Runtime (days)")
+    ax[0].set_ylabel("频率 (Hz)")
+    ax[0].set_xlabel("运行时间 (天)")
     ax[0].tick_params(axis="both", which="both", length=0)
 
+    '''
     ax[0].text(
         0.01,
         0.99,
@@ -205,6 +206,7 @@ def plot_spectogram_with_binned(
         color="white",
         fontsize=12,
     )
+    '''
 
     ##### BINED SPECTROGRAM #####
     bucket_size = 500
@@ -238,9 +240,10 @@ def plot_spectogram_with_binned(
     ax[1].set_yticklabels(list(np.arange(2, 21, 2)))
     ax[1].tick_params(axis="both", which="both", length=0)
 
-    ax[1].set_xlabel("Runtime (days)")
-    ax[1].set_ylabel("Frequency Bin")
+    ax[1].set_xlabel("运行时间 (天)")
+    ax[1].set_ylabel("频率分区")
 
+    '''
     ax[1].text(
         0.01,
         0.99,
@@ -251,6 +254,7 @@ def plot_spectogram_with_binned(
         color="white",
         fontsize=12,
     )
+    '''
 
     sns.despine(left=True, bottom=True, right=True)
     if save_plot:
