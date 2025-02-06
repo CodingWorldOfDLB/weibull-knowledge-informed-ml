@@ -228,8 +228,8 @@ def plot_spectogram_with_binned(
     # get the max value for each bucket
     # https://stackoverflow.com/a/15956341/9214620
     #
-    # max_a = np.max(a.reshape(-1, bucket_size, samples), axis=1)
-    max_a = block_reduce(a, block_size=(bucket_size, 1), func=np.max)
+    max_a = np.max(a.reshape(-1, bucket_size, samples - 1), axis=1)
+    # max_a = block_reduce(a, block_size=(bucket_size, 1), func=np.max)
 
     ax[1].pcolormesh(
         days,
