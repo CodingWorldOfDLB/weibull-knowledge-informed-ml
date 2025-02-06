@@ -117,7 +117,7 @@ def build_spectrogram_df_ims(
         )  # reformat date
 
         # open the file containing the measurements
-        df = pd.read_csv(folder / sample_name, sep="\t", names=col_names)
+        df = pd.read_csv(folder + '/' + sample_name, sep="\t", names=col_names)
 
         # create fft
         x, y, xf, yf = create_fft(
