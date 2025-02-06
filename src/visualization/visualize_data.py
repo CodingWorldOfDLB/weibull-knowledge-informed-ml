@@ -10,6 +10,7 @@ import os
 import torch
 from src.data.data_utils import load_train_test_ims, load_train_test_femto
 from src.features.build_features import build_spectrogram_df_ims, create_fft
+from skimage.measure import block_reduce
 
 
 def create_time_frequency_plot(
@@ -226,7 +227,9 @@ def plot_spectogram_with_binned(
 
     # get the max value for each bucket
     # https://stackoverflow.com/a/15956341/9214620
-    max_a = np.max(a.reshape(-1, bucket_size, samples), axis=1)
+    #
+    # max_a = np.max(a.reshape(-1, bucket_size, samples), axis=1)
+    max_a = block_reduce(a, block_size=(bucket_size, 1), func=np.max)
 
     ax[1].pcolormesh(
         days,
